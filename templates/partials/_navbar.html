@@ -1,0 +1,72 @@
+{% load static %}
+
+<header>
+    <div class="header-area ">
+        <div id="sticky-header" class="main-header-area">
+            <div class="container">
+                <div class="header_bottom_border">
+                    <div class="row align-items-center">
+                        <div class="col-xl-3 col-lg-3">
+                            <div class="logo">
+                                <a href="/">
+                                    <img width="30%" src="{% static 'img/logo.png' %}" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-9 col-lg-9">
+                            <div class="main-menu  d-none d-lg-block">
+                                <nav>
+                                    <ul id="navigation">
+                                        <li class="nav-item"><a href="/accounts/explore">Khám phá</a></li>
+                                        <li class="nav-item"><a href="/accounts/vote">Đánh giá</a></li>
+
+                                        {% if not username %}
+
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="/accounts/login">Đăng nhập</a>
+                                            </li>
+                            
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="/accounts/signup">Đăng kí</a>
+                                            </li>
+                                        {% else %}
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                {{ username }}
+                                                </a>
+                                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                    <a class="dropdown-item text-dark" href="{% url 'accounts:profile' username %}">&nbsp;Profile</a>
+                                                    <a class="dropdown-item text-dark" href="/accounts/logout">&nbsp;Đăng xuất</a>
+                                                </div>
+                                            </li>
+
+
+                                        {% endif %}
+
+                                        <li>
+                                            <form action="{% url 'accounts:search' %}" method="POST">
+                                                {% csrf_token %}
+                                                <input name="search-info" style="width: 10em; display: inline" placeholder="&#128269; Tìm ảnh" onfocus="this.placeholder = ''" onblur="this.placeholder = '&#128269; Tìm ảnh'" id="name" type="text" class="form-control valid">
+                                                <button class="btn btn-danger my-2 my-sm-0" type="submit">Tìm</button>
+                                            </form>
+                                        </li>
+
+                                        <li class="text-white">
+
+                                            {{ id }}
+                                        </li>
+                                    </ul>   
+                                </nav>
+                            </div>
+                        </div>
+                        
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</header>

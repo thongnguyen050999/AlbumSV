@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block header %}
+
+{% include 'partials/_girls_navbar.html' %}
+
+{% endblock %}
+
+{% block content %}
+
+<style>
+
+label {
+    font-size: 1.5em;    
+}
+
+input
+{
+    width: 100%;
+    font-size: 1.5em;
+}
+
+</style>
+<br>
+<div class="container">
+    <h1 class="text-center">Log In</h1>
+    <br>
+    <form class="form-group" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="row">
+                <div class="col-lg-4">
+                    {{ field.label_tag }}
+                </div>
+            
+                <div class="col-lg-8">
+                    {{ field }}
+                </div>
+            
+
+                <br>
+                {% for message in messages %}
+                    <div class="col-lg-12">
+                        <p class="text-danger">{{ message }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+
+        {% endfor %}
+        <br>
+        <button style="font-size: 1.2em;" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+{% endblock %}

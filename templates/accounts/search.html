@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% include 'partials/_girls_navbar.html' %}
+<br>
+<div class="container">
+    <h2 class="text-center">Kết Quả</h2>
+    <br>
+    {% for account in result %}
+    <div class="card">
+        <div class="card-img-top" style="margin-left: 0.5em; margin-top: 0.5em; margin-bottom: 0.5em">
+            <div class="row">
+                <div class="col-lg-1">
+                    <a href="/accounts/{{account.id}}"><img src="{{account.image.url}}" style="border: 0.1em solid #6495ED;" width="70em" height="70em" class="rounded-circle" alt="..."></a>
+                </div>
+                <div class="col-lg-11">
+                    <a href="/accounts/{{account.id}}" class="font-weight-bold">{{account.username}}</a>
+                    <br>
+                    Elo: {{ account.elo }}
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

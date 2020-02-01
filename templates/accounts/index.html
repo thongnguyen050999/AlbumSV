@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% include 'partials/_girls_navbar.html' %}
+{% endblock %}
+
+{% block content %}
+
+    <br>
+
+    <div class="container">
+        <div class="row">
+            {% for account in accounts %}
+
+                {% if account.valid %}
+
+                    <div style="margin-bottom: 0.1em; padding: 0.1em" class="col-lg-3">
+                        <a href="/accounts/{{ account.id }}/detail">
+                            <img style="margin: 0; padding: 0;" width="100%" height="100%" src="{{account.image.url}}" alt="">
+                        </a>
+                    </div>
+
+                {% endif %}
+
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% include 'partials/_girls_navbar.html' %}
+{% endblock %}
+
+{% block content %}
+
+<br>
+
+<div class="container" style="width: 100%">
+    <h1 class="text-center">Ai xinh hơn??</h1>
+    <br><br>
+    <form action="{% url 'accounts:storeElo' %}" method="post">
+        {% csrf_token %}
+
+        <div class="row"> 
+            <div class="col-lg-6">
+                <button type="submit" value="{{ account0.id }}" name="id-button" style="display: block; border: none; margin: 0 auto; padding: 0">
+                    <div class="card submit" style="width: 25em; height: 35.5em;">
+                
+                        <img src="{{account0.image.url}}" style="margin: 0 auto" width="100%" height="85%" alt="...">
+                        <br>
+                        <div style="margin: 0 auto">
+                            <a href=""><img src="{{account0.image.url}}" style="border: 0.1em solid #6495ED; margin-bottom: 0.5em;" width="35em" height="35em" class="rounded-circle" alt="..."></a>
+                            &nbsp;
+                            <a href="/accounts/{{ account0.id }}/detail" class="font-weight-bold" style="font-size: 1.5em">{{account0.username}}</a>
+                        </div>
+                    </div>
+                </button>
+            </div>
+
+            <div class="col-lg-6">
+                <button type="submit" value="{{ account1.id }}" name="id-button" style="display: block; border: none; margin: 0 auto; padding: 0">
+
+                    <div class="card" style="width: 25em; height: 35.5em; margin: 0 auto">
+                    
+
+                        <img src="{{account1.image.url}}" style="margin: 0 auto" width="100%" height="85%" alt="...">
+                        <br>
+                        <div style="margin: 0 auto">
+                            <a href=""><img src="{{account1.image.url}}" style="border: 0.1em solid #6495ED; margin-bottom: 0.5em;" width="35em" height="35em" class="rounded-circle" alt="..."></a>
+                            &nbsp;
+                            <a href="/account1/{{ account1.id }}/detail" class="font-weight-bold" style="font-size: 1.5em">{{account1.username}}</a>
+                        </div>
+                    </div>
+                </button>
+            </div>
+        </div>
+        <input type="text" name="elo-account0" value="{{ account0.elo }}" hidden>
+        <input type="text" name="elo-account1" value="{{ account1.elo }}" hidden>
+        <input type="text" name="id-account0" value="{{ account0.id }}" hidden>
+        <input type="text" name="id-account1" value="{{ account1.id }}" hidden>
+    </form>
+
+</div>
+
+{% endblock %}

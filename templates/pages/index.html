@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+    {% include 'partials/_navbar.html' %}
+    <div class="slider_area">
+        <div class="single_slider  d-flex align-items-center slider_bg_1 overlay">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-xl-12">
+                        <div class="slider_text text-center">
+                            <div class="shape_1 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s">
+                                <img src="{% static 'img/shape/shape_1.svg' %}" alt="">
+                            </div>
+                            <div class="shape_2 wow fadeInDown" data-wow-duration="1s" data-wow-delay=".2s">
+                                <img src="{% static 'img/shape/shape_2.svg' %}" alt="">
+                            </div>
+                            <h3 style="font-size: 10em" class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".4s">Album Sinh Vien</h3>
+                            <p class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".5s">Hồ Chí Minh, Việt Nam</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="performar_area black_bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section_title mb-80">
+                        <h3 class="wow fadeInRight" data-wow-duration="1s" data-wow-delay=".3s">Bảng Xếp Hạng</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="row">
+                        {% for account in accounts %}
+                            <div class="col-lg-6 col-md-6">
+                                <a href="/accounts/{{ account.id }}/detail">
+                                    <div  class="single_performer wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
+                                        <div data-tilt class="thumb">
+                                            <img height="500em" height="100%" src="{{account.image.url}}" alt="">
+                                        </div>
+                                        <div class="performer_heading">
+                                            <h4>{{ account.username }}</h4>
+                                            <span>Elo: {{ account.elo }}</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="about_area black_bg">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="section_title text-center mb-80">
+                        <h3 class="wow fadeInRight" data-wow-duration="1s" data-wow-delay=".3s" >#AlbumSV</h3>
+                        <p class="wow fadeInRight" data-wow-duration="1s" data-wow-delay=".4s" >Nơi lưu giữ kỉ niệm đẹp thời sinh viên</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-7 col-md-6">
+                    <div class="about_thumb">
+                        <div class="shap_3  wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".4s">
+                            <img src="{% static 'img/shape/shape_3.svg' %}" alt="">
+                        </div>
+                        <div class="thumb_inner  wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
+                            <img src="{%static 'img/lonely.jpg' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-6">
+                    <div class="about_info pl-68">
+                        <h4 class=" wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".5s">Đã đến lúc níu giữ thanh xuân!</h4>
+                        <p  class=" wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".6s">Thanh xuân như một tách trà, ảnh mà không có còn gì thanh xuân</p>
+                        <a href="/girls" class="boxed-btn3 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".6s"> 
+                            
+                            <i class="fa fa-eye"></i>
+                            Ngắm ngay
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'partials/_footer.html' %}
+
+{% endblock %}
